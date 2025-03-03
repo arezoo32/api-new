@@ -7,6 +7,16 @@ WORKDIR /app
 # کپی فایل‌های پروژه به کانتینر
 COPY . /app
 
+# نصب ابزارهای توسعه برای کامپایل پکیج‌ها
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    g++ \
+    make \
+    python3-dev \
+    libatlas-base-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # ایجاد محیط conda با پایتون 3.6.13
 RUN conda create -n myenv python=3.6.13 && conda clean -afy
 
@@ -16,10 +26,7 @@ RUN echo "conda activate myenv" >> ~/.bashrc
 RUN conda install -c conda-forge mkl-service && conda clean -afy
 RUN conda install -c conda-forge persistent && conda clean -afy
 
-
-
 # نصب وابستگی‌ها با pip
-# RUN bash -c "source ~/.bashrc && conda activate myenv && pip install --upgrade pip setuptools wheel"
 RUN bash -c "source ~/.bashrc && conda activate myenv && pip install -r requirements.txt"
 
 # اجرای API با Gunicorn
