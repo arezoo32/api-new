@@ -12,7 +12,9 @@ RUN conda create -n myenv python=3.6.13 && conda clean -afy
 
 # فعال‌سازی محیط و نصب وابستگی‌ها
 RUN echo "conda activate myenv" >> ~/.bashrc
-RUN bash -c "source ~/.bashrc && conda activate myenv && conda install -c intel mkl-service && conda clean -afy"
+RUN conda install -c conda-forge mkl-service && conda clean -afy
+
+
 
 # نصب وابستگی‌ها با pip
 RUN bash -c "source ~/.bashrc && conda activate myenv && pip install --upgrade pip setuptools wheel"
