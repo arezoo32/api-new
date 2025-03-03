@@ -12,7 +12,7 @@ RUN conda create -n myenv python=3.6.13 && conda clean -afy
 
 # فعال‌سازی محیط و نصب وابستگی‌ها
 RUN echo "conda activate myenv" >> ~/.bashrc
-RUN conda install -c conda-forge mkl-fft mkl-random && conda clean -afy
+RUN conda install -c defaults mkl-fft mkl-random && conda clean -afy
 RUN conda install -c conda-forge mkl-service && conda clean -afy
 RUN conda install -c conda-forge persistent && conda clean -afy
 
