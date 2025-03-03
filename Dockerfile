@@ -18,7 +18,7 @@ RUN conda install -c conda-forge persistent && conda clean -afy
 
 
 # نصب وابستگی‌ها با pip
-RUN bash -c "source ~/.bashrc && conda activate myenv && pip install --upgrade pip setuptools wheel"
+# RUN bash -c "source ~/.bashrc && conda activate myenv && pip install --upgrade pip setuptools wheel"
 RUN bash -c "source ~/.bashrc && conda activate myenv && pip install -r requirements.txt"
 
 # اجرای API با Gunicorn
