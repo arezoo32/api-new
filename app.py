@@ -6,11 +6,11 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 from keras.models import load_model
 from flask import Flask, request, jsonify, render_template
-import os
 import pickle
 from munkres import Munkres
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # غیرفعال کردن GPU
+import tensorflow as tf
 import gdown
 
 
@@ -19,7 +19,9 @@ import gdown
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # دریافت پورت از متغیر محیطی
+    app.run(host='0.0.0.0', port=port, threaded=True)
 
 
 # تنظیم مسیرهای دایرکتوری
