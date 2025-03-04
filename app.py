@@ -10,6 +10,7 @@ import os
 import pickle
 from munkres import Munkres
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 import gdown
 
 
@@ -18,8 +19,7 @@ import gdown
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-if __name__ == "__main__":
-    app.run(debug=True, host='127.0.0.1', port=5000)
+
 
 
 # تنظیم مسیرهای دایرکتوری
